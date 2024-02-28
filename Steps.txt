@@ -1,0 +1,13 @@
+The project focuses on collecting log data from a windows host machine. THe log data contains remote login attempts from across the world to access the machine. The following steps were used to accomplish this:
+
+1. Upon the creation of an azure account, a windos virtual machine is created with account credentials included
+2. Next, create a log analytics workspace for future log analysis
+3. Enable gathering of VM logs in Security Center
+4. Connect log analytics workspace to VM
+5. Setup Azure Sentinel 
+6. Remote login to VM using RDP on local machine
+7. Observe event viewer logs in VM. For this project, Event ID 4625 is being monitored. This is the login event ID.
+8. Turn off windows firewall on VM
+9. Download PS scripts to connect to geolocation API for login attempts. The API extracts login attempts from event log to derive longitude and latitude of remote connection attempt. It then sends it back to the VM to create custom log geographic raw data.
+10. Create custom log in LAW to upload the same custom log created in the virtual Machine.
+11. Extract fields from raw custom log data. Or directly enter query in Sentinel to obtain custom data fields for analysis.
